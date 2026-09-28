@@ -3,39 +3,207 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <title>Spring Boot Thymeleaf Hello World Example</title>
-
+    <title>GitHub Copilot Agentic Development Dashboard</title>
     <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/main.css}"/>
-
 </head>
-
 <body>
-
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">Spring Boot on App Service</a>
+<nav class="navbar navbar-expand-lg navbar-dark dashboard-navbar">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img th:src="@{/GitHub-Mark-120px-plus.png}" alt="GitHub" class="brand-mark mr-2">
+            <span>Copilot Agentic Dashboard</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#dashboardNav" aria-controls="dashboardNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="dashboardNav">
+            <ul class="navbar-nav ml-auto align-items-lg-center">
+                <li class="nav-item"><a class="nav-link" href="#agents">Agents</a></li>
+                <li class="nav-item"><a class="nav-link" href="#metrics">Metrics</a></li>
+                <li class="nav-item"><a class="nav-link" href="#activity">Activity</a></li>
+                <li class="nav-item ml-lg-3 mt-3 mt-lg-0">
+                    <a class="btn btn-outline-light nav-cta" href="#workflow">Live Demo Ready</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </nav>
 
-<main role="main" class="container">
+<main>
+    <section class="hero-section" id="workflow">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7 mb-5 mb-lg-0">
+                    <span class="eyebrow-badge">LIVE DEMO · PLAN → IMPLEMENT → REVIEW → TEST</span>
+                    <h1 class="display-4 hero-title">GitHub Copilot Agentic Development</h1>
+                    <p class="hero-copy">
+                        Launch a visible multi-agent workflow with coordinated planning, implementation, review, and test signals in one modern dashboard.
+                    </p>
+                    <div class="d-flex flex-column flex-sm-row align-items-sm-center">
+                        <a href="#agents" class="btn btn-primary btn-lg start-btn mr-sm-3 mb-3 mb-sm-0">Start Agent Workflow</a>
+                        <span class="hero-status">Build pipeline online · Test suite green</span>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="hero-panel">
+                        <div class="hero-panel-header">
+                            <span>Workflow Status</span>
+                            <span class="badge badge-success">ACTIVE</span>
+                        </div>
+                        <div class="workflow-stage active-stage">
+                            <span>01</span>
+                            <div>
+                                <strong>Planner</strong>
+                                <p>Scoping the live demo dashboard refresh.</p>
+                            </div>
+                        </div>
+                        <div class="workflow-stage">
+                            <span>02</span>
+                            <div>
+                                <strong>Developer</strong>
+                                <p>Delivering responsive UI updates with minimal backend impact.</p>
+                            </div>
+                        </div>
+                        <div class="workflow-stage">
+                            <span>03</span>
+                            <div>
+                                <strong>Reviewer + Tester</strong>
+                                <p>Checking blocking issues and confirming Maven tests pass.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="starter-template">
-        <h1>Spring Boot</h1>
-        <h3>
-            ... deployed onto Azure with GitHub Actions
-        </h3>
-    </div>
+    <section class="stats-section" id="metrics">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="stat-card">
+                        <span class="stat-label">Agents Online</span>
+                        <h2>5 Agents</h2>
+                        <p>Planner, Developer, Reviewer, Tester, Orchestrator</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="stat-card success-card">
+                        <span class="stat-label">Build Status</span>
+                        <h2>PASS</h2>
+                        <p>Deployment pipeline is ready for the live demonstration.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="stat-card info-card">
+                        <span class="stat-label">Test Status</span>
+                        <h2>PASS</h2>
+                        <p>Lightweight validation is complete and ready to present.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <br>
-    <div style="text-align: center;">
-        <img class="img-fluid" src="https://swimburger.net/media/ppnn3pcl/azure.png" style="width: 10%"/>
-        <img class="img-fluid"src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/169px-Heart_coraz%C3%B3n.svg.png" style="width: 10%">
-        <img class="img-fluid"src="https://raw.githubusercontent.com/JasonFreeberg/my-spring-app/master/src/main/resources/static/GitHub-Mark-120px-plus.png" style="width: 10%">
-    </div>
+    <section class="agents-section" id="agents">
+        <div class="container">
+            <div class="section-heading text-center">
+                <span class="section-kicker">AGENT WORKFLOW</span>
+                <h2>Five focused roles. One fast demo-ready delivery path.</h2>
+                <p>Each card shows a distinct role, current status, and visible contribution to the dashboard flow.</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-xl mb-4 d-flex">
+                    <div class="agent-card planner-card w-100">
+                        <div class="agent-card-header">
+                            <h3>Planner</h3>
+                            <span class="badge badge-pill badge-warning">ACTIVE</span>
+                        </div>
+                        <p>Defines the live demo scope, priority order, and fast execution path.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl mb-4 d-flex">
+                    <div class="agent-card developer-card w-100">
+                        <div class="agent-card-header">
+                            <h3>Developer</h3>
+                            <span class="badge badge-pill badge-success">READY</span>
+                        </div>
+                        <p>Builds the modern hero, cards, layout, and visible UI transformation.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl mb-4 d-flex">
+                    <div class="agent-card reviewer-card w-100">
+                        <div class="agent-card-header">
+                            <h3>Reviewer</h3>
+                            <span class="badge badge-pill badge-success">READY</span>
+                        </div>
+                        <p>Focuses only on blocking issues that could disrupt the demonstration.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl mb-4 d-flex">
+                    <div class="agent-card tester-card w-100">
+                        <div class="agent-card-header">
+                            <h3>Tester</h3>
+                            <span class="badge badge-pill badge-success">READY</span>
+                        </div>
+                        <p>Confirms the dashboard renders cleanly and Maven tests stay green.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl mb-4 d-flex">
+                    <div class="agent-card orchestrator-card w-100">
+                        <div class="agent-card-header">
+                            <h3>Orchestrator</h3>
+                            <span class="badge badge-pill badge-info">ACTIVE</span>
+                        </div>
+                        <p>Coordinates every handoff to keep the live workflow fast and obvious.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <section class="activity-section" id="activity">
+        <div class="container">
+            <div class="section-heading">
+                <span class="section-kicker">RECENT AGENT ACTIVITY</span>
+                <h2>Latest dashboard workflow events</h2>
+            </div>
+            <div class="activity-card">
+                <div class="activity-item">
+                    <span class="activity-time">19:05</span>
+                    <div>
+                        <h4>Planner activated dashboard objective</h4>
+                        <p>Confirmed the home page refresh will prioritize visible UI change with minimal backend edits.</p>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <span class="activity-time">19:08</span>
+                    <div>
+                        <h4>Developer assembled hero and agent grid</h4>
+                        <p>Introduced a dark modern layout, status badges, metrics, and responsive sections.</p>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <span class="activity-time">19:11</span>
+                    <div>
+                        <h4>Reviewer queued blocking-only pass</h4>
+                        <p>Prepared a focused review for demo-breaking issues instead of style-only observations.</p>
+                    </div>
+                </div>
+                <div class="activity-item mb-0">
+                    <span class="activity-time">19:13</span>
+                    <div>
+                        <h4>Tester awaiting Maven verification</h4>
+                        <p>Ready to confirm the visual update works and the existing test suite remains green.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
-<!-- /.container -->
 
+<script type="text/javascript" th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
 </body>
 </html>

@@ -1,15 +1,287 @@
 body {
-  padding-top: 5rem;
-}
-.starter-template {
-  padding: 3rem 1.5rem;
-  text-align: center;
+  background: #07111f;
+  color: #f4f7fb;
+  font-family: "Segoe UI", Arial, sans-serif;
 }
 
-h1 {
-	color:#DE6E4B;
+main {
+  overflow: hidden;
 }
 
-h3 {
-	color:#7FD1B9;
+.dashboard-navbar {
+  background: rgba(5, 11, 22, 0.95);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  padding: 1rem 0;
+}
+
+.brand-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #ffffff;
+  padding: 4px;
+}
+
+.navbar-brand,
+.navbar-brand:hover,
+.nav-link,
+.nav-link:hover {
+  color: #f8fbff !important;
+}
+
+.nav-link {
+  font-weight: 600;
+  margin-left: 1rem;
+}
+
+.nav-cta {
+  border-width: 2px;
+  border-radius: 999px;
+  padding: 0.6rem 1.25rem;
+}
+
+.hero-section {
+  padding: 8rem 0 4rem;
+  background:
+    radial-gradient(circle at top left, rgba(77, 163, 255, 0.28), transparent 36%),
+    radial-gradient(circle at right center, rgba(99, 102, 241, 0.25), transparent 30%),
+    linear-gradient(135deg, #081120 0%, #0d1b33 45%, #0a1220 100%);
+}
+
+.eyebrow-badge {
+  display: inline-block;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #7dd3fc;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.5rem;
+}
+
+.hero-title {
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
+}
+
+.hero-copy {
+  color: #c6d1e1;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  max-width: 620px;
+  margin-bottom: 2rem;
+}
+
+.start-btn {
+  padding: 0.95rem 1.7rem;
+  border-radius: 999px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  border: none;
+  box-shadow: 0 14px 30px rgba(59, 130, 246, 0.35);
+}
+
+.hero-status {
+  color: #9fb1c9;
+  font-weight: 600;
+}
+
+.hero-panel,
+.stat-card,
+.agent-card,
+.activity-card {
+  background: rgba(11, 19, 35, 0.88);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 1.4rem;
+  box-shadow: 0 24px 50px rgba(2, 6, 23, 0.35);
+}
+
+.hero-panel {
+  padding: 1.75rem;
+}
+
+.hero-panel-header,
+.agent-card-header,
+.activity-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.hero-panel-header {
+  margin-bottom: 1rem;
+  color: #dce7f5;
+  font-weight: 700;
+}
+
+.workflow-stage {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+.workflow-stage span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: rgba(59, 130, 246, 0.16);
+  color: #93c5fd;
+  font-weight: 800;
+}
+
+.workflow-stage p,
+.agent-card p,
+.stat-card p,
+.activity-item p,
+.section-heading p {
+  margin-bottom: 0;
+  color: #9fb1c9;
+}
+
+.active-stage span {
+  background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+  color: #fff7ed;
+}
+
+.stats-section,
+.agents-section,
+.activity-section {
+  padding: 0 0 4.5rem;
+}
+
+.stat-card,
+.agent-card {
+  padding: 1.75rem;
+  height: 100%;
+}
+
+.stat-label,
+.section-kicker {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #7dd3fc;
+  margin-bottom: 0.85rem;
+}
+
+.stat-card h2,
+.section-heading h2,
+.agent-card h3,
+.activity-item h4 {
+  color: #f8fbff;
+  font-weight: 750;
+}
+
+.success-card {
+  background: linear-gradient(180deg, rgba(14, 40, 33, 0.94), rgba(11, 19, 35, 0.94));
+}
+
+.info-card {
+  background: linear-gradient(180deg, rgba(20, 30, 61, 0.96), rgba(11, 19, 35, 0.94));
+}
+
+.section-heading {
+  margin-bottom: 2rem;
+}
+
+.section-heading.text-center p {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.agent-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.agent-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+.planner-card::before {
+  background: linear-gradient(135deg, #f59e0b, transparent 55%);
+}
+
+.developer-card::before {
+  background: linear-gradient(135deg, #10b981, transparent 55%);
+}
+
+.reviewer-card::before {
+  background: linear-gradient(135deg, #38bdf8, transparent 55%);
+}
+
+.tester-card::before {
+  background: linear-gradient(135deg, #8b5cf6, transparent 55%);
+}
+
+.orchestrator-card::before {
+  background: linear-gradient(135deg, #ef4444, transparent 55%);
+}
+
+.activity-card {
+  padding: 1.25rem 1.5rem;
+}
+
+.activity-item {
+  gap: 1.25rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.activity-time {
+  min-width: 72px;
+  font-weight: 700;
+  color: #7dd3fc;
+}
+
+.badge-pill {
+  padding: 0.45rem 0.75rem;
+}
+
+.badge-success,
+.badge-info,
+.badge-warning {
+  color: #081120;
+}
+
+@media (max-width: 991.98px) {
+  .hero-section {
+    padding-top: 7rem;
+  }
+
+  .nav-link {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-copy {
+    font-size: 1rem;
+  }
+
+  .stat-card,
+  .agent-card,
+  .hero-panel,
+  .activity-card {
+    padding: 1.35rem;
+  }
+
+  .activity-item {
+    flex-direction: column;
+  }
 }
