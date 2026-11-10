@@ -255,6 +255,192 @@ main {
   color: #081120;
 }
 
+.demo-notice {
+  border-left: 3px solid #7dd3fc;
+  padding: 0.7rem 1rem;
+  background: rgba(125, 211, 252, 0.07);
+  color: #c6d1e1;
+  line-height: 1.6;
+}
+
+.workflow-controls,
+.details-heading,
+.progress-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.workflow-controls {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.workflow-steps,
+.demo-activity {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+.workflow-stage {
+  position: relative;
+  padding: 0.75rem;
+  border-radius: 0.6rem;
+}
+
+.workflow-stage + .workflow-stage::before {
+  content: "↓";
+  position: absolute;
+  top: -0.75rem;
+  right: 0.8rem;
+  color: #9fb1c9;
+}
+
+.stage-state {
+  display: block;
+  color: #b6c8df;
+  margin-top: 0.2rem;
+}
+
+.active-stage {
+  background: rgba(245, 158, 11, 0.12);
+  box-shadow: inset 3px 0 #f59e0b;
+}
+
+.completed-stage {
+  background: rgba(16, 185, 129, 0.08);
+  box-shadow: inset 3px 0 #34d399;
+}
+
+.completed-stage .stage-number {
+  background: #34d399;
+  color: #07111f;
+}
+
+.progress-label {
+  margin: 1rem 0 0.5rem;
+  font-size: 0.85rem;
+  color: #c6d1e1;
+}
+
+.workflow-progress {
+  height: 0.7rem;
+  background: #26344c;
+  border-radius: 999px;
+}
+
+.workflow-progress .progress-bar {
+  background: linear-gradient(90deg, #3b82f6, #34d399);
+  transition: width 0.3s ease;
+}
+
+button.agent-card {
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+
+.agent-card-header {
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.agent-name {
+  font-size: 1.4rem;
+  font-weight: 750;
+}
+
+.agent-summary,
+.agent-card-hint {
+  display: block;
+  position: relative;
+  color: #b6c8df;
+}
+
+.agent-card-hint {
+  color: #7dd3fc;
+  margin-top: 1.25rem;
+  font-weight: 600;
+}
+
+button.agent-card:hover {
+  transform: translateY(-4px);
+  border-color: #7dd3fc;
+}
+
+button.selected-agent {
+  border-color: #7dd3fc;
+  box-shadow: 0 0 0 2px rgba(125, 211, 252, 0.2);
+}
+
+.agent-running .agent-name {
+  color: #fcd34d;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #fcd34d;
+  outline-offset: 4px;
+}
+
+.agent-details {
+  border: 1px solid #47688d;
+  border-radius: 1.4rem;
+  padding: 1.75rem;
+  background: linear-gradient(135deg, #10243d, #0b1323);
+}
+
+.agent-details p,
+.agent-details li {
+  color: #c6d1e1;
+}
+
+.detail-role {
+  font-weight: 700;
+  color: #7dd3fc !important;
+}
+
+.agent-details h4 {
+  font-size: 1rem;
+}
+
+.agent-details ul {
+  margin-bottom: 0;
+  padding-left: 1.25rem;
+}
+
+.workflow-success {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: #0e2821;
+  border: 1px solid #34d399;
+  border-radius: 1rem;
+}
+
+.workflow-success h3 {
+  color: #6ee7b7;
+}
+
+.workflow-success p {
+  margin-bottom: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button.agent-card,
+  .workflow-progress .progress-bar {
+    transition: none;
+  }
+}
+
 @media (max-width: 991.98px) {
   .hero-section {
     padding-top: 7rem;

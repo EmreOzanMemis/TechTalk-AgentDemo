@@ -23,7 +23,7 @@
                 <li class="nav-item"><a class="nav-link" href="#metrics">Metrics</a></li>
                 <li class="nav-item"><a class="nav-link" href="#activity">Activity</a></li>
                 <li class="nav-item ml-lg-3 mt-3 mt-lg-0">
-                    <a class="btn btn-outline-light nav-cta" href="#workflow">Live Demo Ready</a>
+                    <a class="btn btn-outline-light nav-cta" href="#workflow">Interactive Demo</a>
                 </li>
             </ul>
         </div>
@@ -35,42 +35,35 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-7 mb-5 mb-lg-0">
-                    <span class="eyebrow-badge">LIVE DEMO · PLAN → IMPLEMENT → REVIEW → TEST</span>
+                    <span class="eyebrow-badge">SIMULATED DEMO · PLAN → DEVELOP → REVIEW → TEST → COMPLETE</span>
                     <h1 class="display-4 hero-title">GitHub Copilot Agentic Development</h1>
                     <p class="hero-copy">
-                        Launch a visible multi-agent workflow with coordinated planning, implementation, review, and test signals in one modern dashboard.
+                        Explore five agent roles and watch a simulated workflow move from planning to completion.
                     </p>
-                    <div class="d-flex flex-column flex-sm-row align-items-sm-center">
-                        <a href="#agents" class="btn btn-primary btn-lg start-btn mr-sm-3 mb-3 mb-sm-0">Start Agent Workflow</a>
-                        <span class="hero-status">Build pipeline online · Test suite green</span>
+                    <p class="demo-notice" id="demo-notice">All execution statuses, metrics, and activity are simulated demo data. No agents, builds, or tests are executed. No live GitHub telemetry is connected.</p>
+                    <div class="workflow-controls">
+                        <button type="button" id="start-workflow" class="btn btn-primary btn-lg start-btn" aria-describedby="demo-notice" disabled>Start Agent Workflow</button>
+                        <button type="button" id="reset-workflow" class="btn btn-outline-light nav-cta" disabled>Reset Demo</button>
                     </div>
+                    <p class="hero-status mt-3" id="workflow-announcement" role="status" aria-live="polite" aria-atomic="true">Demo ready. Select an agent to explore its role, or start the simulation.</p>
+                    <noscript><p class="demo-notice">Enable JavaScript to use agent details and the simulated workflow.</p></noscript>
                 </div>
                 <div class="col-lg-5">
                     <div class="hero-panel">
                         <div class="hero-panel-header">
-                            <span>Workflow Status</span>
-                            <span class="badge badge-success">ACTIVE</span>
+                            <span>Simulated Workflow</span>
+                            <span class="badge badge-info" id="workflow-status">DEMO · READY</span>
                         </div>
-                        <div class="workflow-stage active-stage">
-                            <span>01</span>
-                            <div>
-                                <strong>Planner</strong>
-                                <p>Scoping the live demo dashboard refresh.</p>
-                            </div>
-                        </div>
-                        <div class="workflow-stage">
-                            <span>02</span>
-                            <div>
-                                <strong>Developer</strong>
-                                <p>Delivering responsive UI updates with minimal backend impact.</p>
-                            </div>
-                        </div>
-                        <div class="workflow-stage">
-                            <span>03</span>
-                            <div>
-                                <strong>Reviewer + Tester</strong>
-                                <p>Checking blocking issues and confirming Maven tests pass.</p>
-                            </div>
+                        <ol class="workflow-steps" aria-label="Simulated workflow stages">
+                            <li class="workflow-stage" data-stage="0"><span class="stage-number">01</span><div><strong>PLAN</strong><p>Planner scopes the objective.</p><small class="stage-state">Demo · Pending</small></div></li>
+                            <li class="workflow-stage" data-stage="1"><span class="stage-number">02</span><div><strong>DEVELOP</strong><p>Developer implements the plan.</p><small class="stage-state">Demo · Pending</small></div></li>
+                            <li class="workflow-stage" data-stage="2"><span class="stage-number">03</span><div><strong>REVIEW</strong><p>Reviewer checks the changes.</p><small class="stage-state">Demo · Pending</small></div></li>
+                            <li class="workflow-stage" data-stage="3"><span class="stage-number">04</span><div><strong>TEST</strong><p>Tester simulates validation.</p><small class="stage-state">Demo · Pending</small></div></li>
+                            <li class="workflow-stage" data-stage="4"><span class="stage-number">05</span><div><strong>COMPLETE</strong><p>Orchestrator closes the demo.</p><small class="stage-state">Demo · Pending</small></div></li>
+                        </ol>
+                        <div class="progress-label"><span>Simulated progress</span><span id="progress-value">0%</span></div>
+                        <div class="progress workflow-progress" role="progressbar" aria-label="Simulated workflow progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="workflow-progress">
+                            <div class="progress-bar" id="workflow-progress-bar" style="width: 0%"></div>
                         </div>
                     </div>
                 </div>
@@ -83,23 +76,23 @@
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <div class="stat-card">
-                        <span class="stat-label">Agents Online</span>
+                        <span class="stat-label">DEMO · SIMULATED AGENTS</span>
                         <h2>5 Agents</h2>
                         <p>Planner, Developer, Reviewer, Tester, Orchestrator</p>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="stat-card success-card">
-                        <span class="stat-label">Build Status</span>
-                        <h2>PASS</h2>
-                        <p>Deployment pipeline is ready for the live demonstration.</p>
+                        <span class="stat-label">DEMO · COMPLETED STAGES</span>
+                        <h2 id="completed-stages">0 / 5</h2>
+                        <p>Simulated milestones, not actual build or deployment results.</p>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="stat-card info-card">
-                        <span class="stat-label">Test Status</span>
-                        <h2>PASS</h2>
-                        <p>Lightweight validation is complete and ready to present.</p>
+                        <span class="stat-label">DEMO · TEST STATUS</span>
+                        <h2 id="test-status">Pending</h2>
+                        <p>Illustrative validation only. No test suite is executed.</p>
                     </div>
                 </div>
             </div>
@@ -109,56 +102,58 @@
     <section class="agents-section" id="agents">
         <div class="container">
             <div class="section-heading text-center">
-                <span class="section-kicker">AGENT WORKFLOW</span>
+                <span class="section-kicker">SIMULATED AGENT WORKFLOW</span>
                 <h2>Five focused roles. One fast demo-ready delivery path.</h2>
-                <p>Each card shows a distinct role, current status, and visible contribution to the dashboard flow.</p>
+                <p>Select any card with a click, Enter, or Space to explore its role and responsibilities. All statuses are simulated.</p>
             </div>
             <div class="row">
                 <div class="col-md-6 col-xl mb-4 d-flex">
-                    <div class="agent-card planner-card w-100">
-                        <div class="agent-card-header">
-                            <h3>Planner</h3>
-                            <span class="badge badge-pill badge-warning">ACTIVE</span>
-                        </div>
-                        <p>Defines the live demo scope, priority order, and fast execution path.</p>
-                    </div>
+                    <button type="button" class="agent-card planner-card w-100 selected-agent" data-agent="planner" aria-pressed="true" aria-controls="agent-details">
+                        <span class="agent-card-header"><span class="agent-name">Planner</span><span class="badge badge-pill badge-info" data-agent-status>Demo · Ready</span></span>
+                        <span class="agent-summary">Defines the live demo scope, priority order, and fast execution path.</span>
+                        <span class="agent-card-hint">Explore role →</span>
+                    </button>
                 </div>
                 <div class="col-md-6 col-xl mb-4 d-flex">
-                    <div class="agent-card developer-card w-100">
-                        <div class="agent-card-header">
-                            <h3>Developer</h3>
-                            <span class="badge badge-pill badge-success">READY</span>
-                        </div>
-                        <p>Builds the modern hero, cards, layout, and visible UI transformation.</p>
-                    </div>
+                    <button type="button" class="agent-card developer-card w-100" data-agent="developer" aria-pressed="false" aria-controls="agent-details">
+                        <span class="agent-card-header"><span class="agent-name">Developer</span><span class="badge badge-pill badge-info" data-agent-status>Demo · Ready</span></span>
+                        <span class="agent-summary">Builds the modern hero, cards, layout, and visible UI transformation.</span>
+                        <span class="agent-card-hint">Explore role →</span>
+                    </button>
                 </div>
                 <div class="col-md-6 col-xl mb-4 d-flex">
-                    <div class="agent-card reviewer-card w-100">
-                        <div class="agent-card-header">
-                            <h3>Reviewer</h3>
-                            <span class="badge badge-pill badge-success">READY</span>
-                        </div>
-                        <p>Focuses only on blocking issues that could disrupt the demonstration.</p>
-                    </div>
+                    <button type="button" class="agent-card reviewer-card w-100" data-agent="reviewer" aria-pressed="false" aria-controls="agent-details">
+                        <span class="agent-card-header"><span class="agent-name">Reviewer</span><span class="badge badge-pill badge-info" data-agent-status>Demo · Ready</span></span>
+                        <span class="agent-summary">Focuses only on blocking issues that could disrupt the demonstration.</span>
+                        <span class="agent-card-hint">Explore role →</span>
+                    </button>
                 </div>
                 <div class="col-md-6 col-xl mb-4 d-flex">
-                    <div class="agent-card tester-card w-100">
-                        <div class="agent-card-header">
-                            <h3>Tester</h3>
-                            <span class="badge badge-pill badge-success">READY</span>
-                        </div>
-                        <p>Confirms the dashboard renders cleanly and Maven tests stay green.</p>
-                    </div>
+                    <button type="button" class="agent-card tester-card w-100" data-agent="tester" aria-pressed="false" aria-controls="agent-details">
+                        <span class="agent-card-header"><span class="agent-name">Tester</span><span class="badge badge-pill badge-info" data-agent-status>Demo · Ready</span></span>
+                        <span class="agent-summary">Demonstrates the validation handoff without running actual tests.</span>
+                        <span class="agent-card-hint">Explore role →</span>
+                    </button>
                 </div>
                 <div class="col-md-6 col-xl mb-4 d-flex">
-                    <div class="agent-card orchestrator-card w-100">
-                        <div class="agent-card-header">
-                            <h3>Orchestrator</h3>
-                            <span class="badge badge-pill badge-info">ACTIVE</span>
-                        </div>
-                        <p>Coordinates every handoff to keep the live workflow fast and obvious.</p>
-                    </div>
+                    <button type="button" class="agent-card orchestrator-card w-100" data-agent="orchestrator" aria-pressed="false" aria-controls="agent-details">
+                        <span class="agent-card-header"><span class="agent-name">Orchestrator</span><span class="badge badge-pill badge-info" data-agent-status>Demo · Ready</span></span>
+                        <span class="agent-summary">Coordinates every handoff to keep the live workflow fast and obvious.</span>
+                        <span class="agent-card-hint">Explore role →</span>
+                    </button>
                 </div>
+            </div>
+            <section class="agent-details" id="agent-details" aria-labelledby="detail-name">
+                <span class="section-kicker">SELECTED AGENT · SIMULATED DEMO</span>
+                <div class="details-heading"><h3 id="detail-name">Planner</h3><span class="badge badge-pill badge-info" id="detail-status">Demo · Ready</span></div>
+                <p class="detail-role" id="detail-role">Role: Workflow strategist</p>
+                <p id="detail-description">Turns a dashboard objective into a focused delivery plan.</p>
+                <h4>Responsibilities</h4>
+                <ul id="detail-responsibilities"><li>Define scope and acceptance criteria.</li><li>Prioritize visible improvements.</li><li>Prepare the developer handoff.</li></ul>
+            </section>
+            <div class="workflow-success" id="workflow-success" hidden>
+                <h3>Demo workflow complete!</h3>
+                <p>All five simulated stages are complete. No real agents, builds, tests, or GitHub operations were run. Start again to replay, or reset the demo.</p>
             </div>
         </div>
     </section>
@@ -166,44 +161,19 @@
     <section class="activity-section" id="activity">
         <div class="container">
             <div class="section-heading">
-                <span class="section-kicker">RECENT AGENT ACTIVITY</span>
-                <h2>Latest dashboard workflow events</h2>
+                <span class="section-kicker">SIMULATED DEMO ACTIVITY</span>
+                <h2>Follow every handoff</h2>
+                <p>Illustrative events from this browser session only—not GitHub telemetry.</p>
             </div>
-            <div class="activity-card">
-                <div class="activity-item">
-                    <span class="activity-time">19:05</span>
-                    <div>
-                        <h4>Planner activated dashboard objective</h4>
-                        <p>Confirmed the home page refresh will prioritize visible UI change with minimal backend edits.</p>
-                    </div>
-                </div>
-                <div class="activity-item">
-                    <span class="activity-time">19:08</span>
-                    <div>
-                        <h4>Developer assembled hero and agent grid</h4>
-                        <p>Introduced a dark modern layout, status badges, metrics, and responsive sections.</p>
-                    </div>
-                </div>
-                <div class="activity-item">
-                    <span class="activity-time">19:11</span>
-                    <div>
-                        <h4>Reviewer queued blocking-only pass</h4>
-                        <p>Prepared a focused review for demo-breaking issues instead of style-only observations.</p>
-                    </div>
-                </div>
-                <div class="activity-item mb-0">
-                    <span class="activity-time">19:13</span>
-                    <div>
-                        <h4>Tester awaiting Maven verification</h4>
-                        <p>Ready to confirm the visual update works and the existing test suite remains green.</p>
-                    </div>
-                </div>
-            </div>
+            <ul class="activity-card demo-activity" id="activity-log" aria-label="Simulated activity history">
+                <li class="activity-item">Demo ready. Start the workflow to see simulated handoffs.</li>
+            </ul>
         </div>
     </section>
 </main>
 
 <script type="text/javascript" th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/dashboard.js}" defer></script>
 </body>
 </html>
