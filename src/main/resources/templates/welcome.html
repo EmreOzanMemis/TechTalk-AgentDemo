@@ -41,8 +41,18 @@
                         Explore five agent roles and watch a simulated workflow move from planning to completion.
                     </p>
                     <p class="demo-notice" id="demo-notice">All execution statuses, metrics, and activity are simulated demo data. No agents, builds, or tests are executed. No live GitHub telemetry is connected.</p>
+                    <div class="demo-scenario">
+                        <label for="demo-scenario">Demo Scenario</label>
+                        <select id="demo-scenario" class="custom-select" aria-describedby="scenario-description">
+                            <option value="success">Successful Delivery</option>
+                            <option value="review-failed">Code Review Failed</option>
+                            <option value="test-failed">Automated Test Failed</option>
+                        </select>
+                        <p id="scenario-description" class="scenario-description scenario-success">Simulated demo: all stages complete successfully.</p>
+                    </div>
                     <div class="workflow-controls">
                         <button type="button" id="start-workflow" class="btn btn-primary btn-lg start-btn" aria-describedby="demo-notice" disabled>Start Agent Workflow</button>
+                        <button type="button" id="retry-workflow" class="btn btn-warning nav-cta" hidden>Fix &amp; Retry</button>
                         <button type="button" id="reset-workflow" class="btn btn-outline-light nav-cta" disabled>Reset Demo</button>
                     </div>
                     <p class="hero-status mt-3" id="workflow-announcement" role="status" aria-live="polite" aria-atomic="true">Demo ready. Select an agent to explore its role, or start the simulation.</p>

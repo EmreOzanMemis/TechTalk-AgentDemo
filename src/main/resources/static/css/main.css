@@ -272,9 +272,75 @@ main {
   gap: 1rem;
 }
 
+.details-heading {
+  flex-wrap: wrap;
+}
+
 .workflow-controls {
   justify-content: flex-start;
   flex-wrap: wrap;
+}
+
+.demo-scenario {
+  margin-bottom: 1.5rem;
+  max-width: 34rem;
+}
+
+.demo-scenario label {
+  font-weight: 700;
+}
+
+.demo-scenario .custom-select {
+  background-color: #10243d;
+  color: #f4f7fb;
+  border-color: #47688d;
+}
+
+.scenario-description {
+  margin: 0.75rem 0 0;
+  padding-left: 0.75rem;
+  border-left: 3px solid currentColor;
+}
+
+.scenario-success {
+  color: #6ee7b7;
+}
+
+.scenario-review-failed,
+.agent-blocked .agent-name {
+  color: #fcd34d;
+}
+
+.scenario-test-failed,
+.agent-failed .agent-name {
+  color: #fda4af;
+}
+
+.blocked-stage {
+  background: rgba(245, 158, 11, 0.15);
+  box-shadow: inset 3px 0 #fcd34d;
+}
+
+.failed-stage {
+  background: rgba(239, 68, 68, 0.15);
+  box-shadow: inset 3px 0 #fb7185;
+}
+
+.blocked-stage .stage-number,
+.workflow-progress.progress-blocked .progress-bar {
+  background: #fcd34d;
+  color: #07111f;
+}
+
+.failed-stage .stage-number,
+.workflow-progress.progress-failed .progress-bar {
+  background: #fb7185;
+  color: #07111f;
+}
+
+.demo-scenario select:focus-visible {
+  outline: 3px solid #fcd34d;
+  outline-offset: 4px;
 }
 
 .workflow-steps,
