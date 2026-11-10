@@ -36,24 +36,35 @@
     const stages = Array.from(document.querySelectorAll('[data-stage]'));
     const start = byId('start-workflow');
     const reset = byId('reset-workflow');
+    const retry = byId('retry-workflow');
+    const scenario = byId('demo-scenario');
+    const scenarios = {
+        success: { description: 'Simulated demo: all stages complete successfully.', failure: -1 },
+        'review-failed': { description: 'Simulated demo: review blocks delivery. Fix & Retry repeats review, then testing.', failure: 2 },
+        'test-failed': { description: 'Simulated demo: automated validation fails. Fix & Retry repeats testing.', failure: 3 }
+    };
     let selected = 'planner';
     let current = -1;
     let running = false;
     let complete = false;
     let timer = null;
     let generation = 0;
+    let failed = false;
+    let retried = false;
 
     function statusFor(key) {
         if (complete) return 'Completed';
-        if (!running) return 'Ready';
+        if (!running && !failed) return 'Ready';
+        if (failed && key === 'orchestrator') return 'Blocked';
         if (key === 'orchestrator') return 'Active';
         const index = sequence.indexOf(key);
+        if (failed && index === current) return current === 2 ? 'Blocked' : 'Failed';
         return index < current ? 'Completed' : index === current ? 'Active' : 'Ready';
     }
 
     function setBadge(element, status) {
         element.textContent = 'Demo · ' + status;
-        element.className = 'badge badge-pill ' + (status === 'Active' ? 'badge-warning' : status === 'Completed' ? 'badge-success' : 'badge-info');
+        element.className = 'badge badge-pill ' + (status === 'Failed' ? 'badge-danger' : status === 'Active' || status === 'Blocked' ? 'badge-warning' : status === 'Completed' ? 'badge-success' : 'badge-info');
     }
 
     function showDetails() {
@@ -79,27 +90,38 @@
             card.setAttribute('aria-pressed', String(key === selected));
             card.classList.toggle('selected-agent', key === selected);
             card.classList.toggle('agent-running', status === 'Active');
+            card.classList.toggle('agent-blocked', status === 'Blocked');
+            card.classList.toggle('agent-failed', status === 'Failed');
             setBadge(card.querySelector('[data-agent-status]'), status);
         });
         stages.forEach((stage, index) => {
             const active = running && index === current;
             const completed = index < done;
+            const failure = failed && index === current;
             stage.classList.toggle('active-stage', active);
             stage.classList.toggle('completed-stage', completed);
-            if (active) stage.setAttribute('aria-current', 'step');
+            stage.classList.toggle('blocked-stage', failure && current === 2);
+            stage.classList.toggle('failed-stage', failure && current === 3);
+            if (active || failure) stage.setAttribute('aria-current', 'step');
             else stage.removeAttribute('aria-current');
-            stage.querySelector('.stage-state').textContent = 'Demo · ' + (completed ? 'Completed' : active ? 'Active' : 'Pending');
+            stage.querySelector('.stage-state').textContent = 'Demo · ' + (failure ? current === 2 ? 'BLOCKED' : 'TEST FAILED' : completed ? 'Completed' : active ? 'Active' : 'Pending');
         });
         const progress = done * 20;
         byId('progress-value').textContent = progress + '%';
         byId('workflow-progress').setAttribute('aria-valuenow', String(progress));
         byId('workflow-progress-bar').style.width = progress + '%';
+        byId('workflow-progress').classList.toggle('progress-blocked', failed && current === 2);
+        byId('workflow-progress').classList.toggle('progress-failed', failed && current === 3);
         byId('completed-stages').textContent = done + ' / 5';
-        byId('test-status').textContent = complete ? 'Simulated pass' : current === 3 ? 'Simulating…' : 'Pending';
-        setBadge(byId('workflow-status'), complete ? 'Completed' : running ? 'Active' : 'Ready');
+        byId('test-status').textContent = complete ? 'Simulated pass' : failed ? current === 3 ? 'Simulated failure' : 'Blocked by review' : current === 3 ? 'Simulating…' : 'Pending';
+        setBadge(byId('workflow-status'), complete ? 'Completed' : failed ? current === 2 ? 'Blocked' : 'Failed' : running ? 'Active' : 'Ready');
         byId('workflow-success').hidden = !complete;
-        start.disabled = running;
+        start.disabled = running || failed;
         start.textContent = running ? 'Demo in progress…' : complete ? 'Run Demo Again' : 'Start Agent Workflow';
+        retry.hidden = !failed;
+        const description = byId('scenario-description');
+        description.textContent = scenarios[scenario.value].description;
+        description.className = 'scenario-description scenario-' + scenario.value;
         showDetails();
     }
 
@@ -116,6 +138,8 @@
         generation += 1;
         running = false;
         complete = false;
+        failed = false;
+        retried = false;
         current = -1;
         selected = 'planner';
         byId('activity-log').textContent = '';
@@ -126,6 +150,16 @@
 
     function advance(run) {
         if (run !== generation || !running) return;
+        if (!retried && current === scenarios[scenario.value].failure && current >= 0) {
+            failed = true;
+            running = false;
+            timer = null;
+            const message = current === 2 ? 'REVIEW BLOCKED. Simulated code review found an issue.' : 'TEST FAILED. Simulated automated validation found an issue.';
+            log(message + ' Use Fix & Retry to simulate a correction and repeat validation.');
+            byId('workflow-announcement').textContent = 'Simulated demo: ' + message + ' Fix & Retry is available. No real execution occurred.';
+            render();
+            return;
+        }
         if (current >= 0) log(labels[current] + ' completed.');
         current += 1;
         if (current === 4) {
@@ -155,6 +189,18 @@
         advance(generation);
     });
     reset.addEventListener('click', restore);
+    scenario.addEventListener('change', restore);
+    retry.addEventListener('click', () => {
+        if (!failed) return;
+        failed = false;
+        retried = true;
+        running = true;
+        log('Simulated fix applied. Retrying ' + labels[current] + '; Orchestrator coordinating.');
+        byId('workflow-announcement').textContent = 'Simulated fix applied. ' + labels[current] + ' validation running again. No source code was changed.';
+        const run = generation;
+        timer = setTimeout(() => advance(run), 1800);
+        render();
+    });
     reset.disabled = false;
     restore();
 })();

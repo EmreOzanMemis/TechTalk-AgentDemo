@@ -10,6 +10,12 @@ All statuses, metrics, and activity are browser-only simulated demo data—not l
 GitHub telemetry or real agent, build, or test execution. JavaScript is required;
 there are no additional dependencies or backend changes.
 
+Use **Demo Scenario** to choose Successful Delivery, Code Review Failed, or
+Automated Test Failed. Failure scenarios pause with a simulated blocked/failed
+status and a **Fix & Retry** action. Retry repeats the failed validation stage,
+then continues to completion without changing source code or running real tests.
+Reset or switching scenarios cancels the current run and clears its history.
+
 Trying to get started with Java on Azure? See these resources:
 
 - [Azure Samples](https://github.com/azure-samples?q=java&type=&language=&sort=)
